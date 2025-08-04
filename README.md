@@ -1,4 +1,7 @@
-# BonkOps Dashboard 🚀
+# BonkOps - $BOPS
+
+![Your paragraph text (3)](https://github.com/user-attachments/assets/ea845f34-706e-4081-8f3b-ea67000a21de)
+
 
 A professional multi-wallet trading dashboard for pump.fun tokens with automated trading capabilities.
 
