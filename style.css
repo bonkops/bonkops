@@ -1,0 +1,2990 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* BonkOps Tactical Color Scheme */
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-tertiary: #141414;
+    --bg-card: #1a1a1a;
+    --bg-hover: #242424;
+    
+    /* Text colors */
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #808080;
+    
+    /* BonkOps Orange Accent */
+    --accent-primary: #ff6b00;
+    --accent-secondary: #ff8c00;
+    --accent-gradient: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+    
+    /* Status colors */
+    --color-success: #00ff88;
+    --color-danger: #ff3333;
+    --color-warning: #ffaa00;
+    --color-info: #00aaff;
+    
+    /* Softer status colors for backgrounds */
+    --bg-success: rgba(0, 255, 136, 0.1);
+    --bg-danger: rgba(255, 51, 51, 0.1);
+    --bg-warning: rgba(255, 170, 0, 0.1);
+    --bg-info: rgba(0, 170, 255, 0.1);
+    
+    /* Borders */
+    --border-color: #2a2a2a;
+    --border-hover: #404040;
+    
+    /* Dev wallet special colors */
+    --dev-wallet-bg: rgba(255, 107, 0, 0.05);
+    --dev-wallet-border: rgba(255, 107, 0, 0.3);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #000000;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Main App Container with Padding */
+.app-container {
+    min-height: 100vh;
+    background-color: #000000;
+    background-image: url('bonkops-background.svg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 5vh 5vw;
+    box-sizing: border-box;
+}
+
+/* BonkOps Header */
+.bonkops-header {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px 32px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bonkops-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bonkops-logo img {
+    height: 80px;
+    width: auto;
+}
+
+.bonkops-logo-text {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+}
+
+.bonkops-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.bonkops-nav-btn {
+    padding: 12px 24px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bonkops-nav-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.bonkops-nav-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Upcoming Feature Buttons */
+.bonkops-nav-btn.upcoming-feature {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.5;
+    position: relative;
+}
+
+.bonkops-nav-btn.upcoming-feature:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-tertiary);
+    transform: none;
+}
+
+.bonkops-nav-btn.upcoming-feature::after {
+    content: "COMING SOON";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.bonkops-nav-btn.upcoming-feature:hover::after {
+    opacity: 1;
+}
+
+/* Nav Divider - Updated for proper centering */
+.nav-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-color);
+    margin: 0 20px;
+    opacity: 0.5;
+    align-self: center; /* This centers the divider vertically */
+}
+
+/* Also ensure the nav is using flexbox with center alignment */
+.bonkops-nav {
+    display: flex;
+    gap: 12px;
+    align-items: center; /* This ensures all items including the divider are centered */
+}
+
+/* Upcoming Feature Buttons */
+.bonkops-nav-btn.upcoming-feature {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.5;
+    position: relative;
+}
+
+.bonkops-nav-btn.upcoming-feature:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-tertiary);
+    transform: none;
+}
+
+.bonkops-nav-btn.upcoming-feature::after {
+    content: "COMING SOON";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.bonkops-nav-btn.upcoming-feature:hover::after {
+    opacity: 1;
+}
+
+.container {
+    max-width: 100%;
+    min-height: calc(90vh - 80px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header Section */
+.header {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.wallet-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent-primary);
+}
+
+.wallet-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wallet-count {
+    background: var(--bg-tertiary);
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Tactical Button Styles */
+.btn-base {
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 36px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.update-balance-btn {
+    padding: 9px 16px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.update-balance-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.update-balance-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.refresh-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    color: var(--text-secondary);
+}
+
+.refresh-icon.spinning {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Portfolio Stats */
+.portfolio-stats {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: var(--bg-tertiary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 44px;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.stat-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.stat-value.positive {
+    color: var(--color-success);
+}
+
+.stat-value.negative {
+    color: var(--color-danger);
+}
+
+.stat-change {
+    font-size: 10px;
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 0;
+}
+
+/* Active Positions Section */
+.positions-section {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 800px;
+}
+
+.positions-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Token Info Bar */
+.current-token-info {
+    background: var(--bg-tertiary);
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.token-details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.token-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.token-mint-full {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-family: 'JetBrains Mono', monospace;
+    word-break: break-all;
+    max-width: 300px;
+}
+
+.token-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background: var(--bg-info);
+    color: var(--color-info);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.token-status.active {
+    background: var(--bg-success);
+    color: var(--color-success);
+}
+
+.token-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.token-input-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.token-ca-input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    width: 280px;
+    outline: none;
+}
+
+.token-ca-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.track-token-btn {
+    padding: 6px 12px;
+    background: transparent;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.track-token-btn:hover {
+    background: var(--color-success);
+    color: var(--bg-primary);
+}
+
+.clear-token-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.clear-token-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+/* Token Holdings Panel */
+.token-holdings-panel {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow: hidden;
+}
+
+.holdings-section {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.holdings-section.position-section {
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+}
+
+.holdings-section.market-section {
+    background: rgba(255, 107, 0, 0.03);
+}
+
+.nuke-buttons {
+    display: flex;
+    gap: 8px;
+    padding-right: 16px;
+    border-right: 1px solid var(--border-color);
+}
+
+.nuke-btn {
+    padding: 9px 16px;
+    background: transparent;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nuke-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+    transform: scale(1.05);
+}
+
+.nuke-btn:active {
+    transform: scale(0.98);
+}
+
+.nuke-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.holdings-stats {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.market-stats {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.holdings-stat {
+    background: var(--bg-tertiary);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    flex: 1;
+}
+
+.market-stat {
+    background: rgba(255, 107, 0, 0.08);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    flex: 1;
+}
+
+.holdings-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.market-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    opacity: 0.8;
+}
+
+.holdings-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.market-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.market-value.mc-pnl {
+    font-size: 16px;
+}
+
+.market-value.mc-pnl.positive {
+    color: var(--color-success);
+}
+
+.market-value.mc-pnl.negative {
+    color: var(--color-danger);
+}
+
+.holdings-value.highlight {
+    color: var(--accent-primary);
+}
+
+/* Others' SOL stat box */
+.market-stat.others-sol {
+    background: rgba(255, 107, 0, 0.08);
+    border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.market-value.others-sol-value {
+    color: var(--accent-primary);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Tooltip for Others' SOL */
+.others-sol-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.others-sol-tooltip:hover::after {
+    content: "SOL in bonding curve from other traders (excluding your investments)";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 8px;
+}
+
+/* Wallet Grid */
+.wallets-grid {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    align-content: start;
+}
+
+/* Wallet Card */
+.wallet-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.2s ease;
+    position: relative;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wallet-card:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+}
+
+/* Dev wallet special styling */
+.wallet-card.dev-wallet {
+    background: var(--dev-wallet-bg);
+    border-color: var(--dev-wallet-border);
+}
+
+.wallet-card.dev-wallet:hover {
+    background: rgba(255, 107, 0, 0.08);
+    border-color: var(--accent-primary);
+}
+
+.wallet-identifier {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    height: 20px;
+}
+
+.wallet-name {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dev-wallet-badge {
+    font-size: 10px;
+    color: var(--accent-primary);
+    background: rgba(255, 107, 0, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wallet-balance {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+    height: 20px;
+}
+
+.wallet-holdings {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.wallet-holdings.no-position {
+    color: var(--text-tertiary);
+    font-size: 16px;
+}
+
+.wallet-value {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.wallet-pnl-container {
+    height: 36px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.wallet-pnl {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.wallet-pnl.positive {
+    color: var(--color-success);
+    background: var(--bg-success);
+}
+
+.wallet-pnl.negative {
+    color: var(--color-danger);
+    background: var(--bg-danger);
+}
+
+.wallet-pnl.placeholder {
+    color: var(--text-tertiary);
+    background: var(--bg-tertiary);
+    border: 1px dashed var(--border-color);
+}
+
+.wallet-entry-info {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.wallet-entry-mc {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.wallet-entry-time {
+    color: var(--text-tertiary);
+    font-size: 10px;
+}
+
+/* Action Buttons */
+.wallet-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.action-row {
+    display: flex;
+    gap: 8px;
+}
+
+.buy-btn {
+    flex: 1;
+    padding: 9px 16px;
+    background: transparent;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.buy-btn:hover {
+    background: var(--color-success);
+    color: var(--bg-primary);
+}
+
+.buy-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.sell-btn {
+    flex: 1;
+    padding: 9px 16px;
+    background: transparent;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sell-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+.sell-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.action-btn.processing {
+    background: var(--bg-warning);
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+    cursor: not-allowed;
+}
+
+.no-position-message {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+/* No Token State */
+.no-token-state {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-tertiary);
+}
+
+.no-token-state h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.no-token-state p {
+    font-size: 14px;
+}
+
+/* Recent Activity Sidebar - Now a button */
+.activity-toggle-btn {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.activity-toggle-btn:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Activity Window */
+.activity-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 90vw;
+    max-height: 70vh;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+.activity-window.active {
+    display: flex;
+}
+
+.activity-window-header {
+    background: var(--bg-tertiary);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+    border-radius: 12px 12px 0 0;
+}
+
+.activity-window-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.activity-window-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.activity-window-close:hover {
+    background: var(--bg-danger);
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.activity-window-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+/* Hide the old sidebar */
+.activity-sidebar {
+    display: none;
+}
+
+.activity-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.activity-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+    font-size: 11px;
+}
+
+.activity-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.activity-type {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.activity-type.buy {
+    background: var(--bg-success);
+    color: var(--color-success);
+}
+
+.activity-type.sell {
+    background: var(--bg-danger);
+    color: var(--color-danger);
+}
+
+.activity-type.create {
+    background: var(--bg-info);
+    color: var(--color-info);
+}
+
+.activity-type.spam-launch {
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--accent-primary);
+}
+
+.activity-time {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.activity-details {
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.activity-wallet {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+.activity-auto-sell {
+    font-size: 10px;
+    color: var(--accent-primary);
+    margin-top: 4px;
+    padding: 2px 6px;
+    background: rgba(255, 107, 0, 0.1);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Wallet Manager Button */
+.wallet-manager-btn {
+    background: var(--bg-tertiary);
+    padding: 9px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wallet-manager-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Auto Trade Settings Button */
+.auto-trade-btn {
+    background: var(--bg-tertiary);
+    padding: 9px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auto-trade-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.auto-trade-btn.active {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Auto Trade Window */
+.auto-trade-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+    width: 700px;
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow: hidden;
+}
+
+.auto-trade-window.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Auto Trade Sections */
+.auto-trade-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.auto-trade-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.auto-trade-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auto-trade-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toggle-switch.active {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: all 0.2s ease;
+}
+
+.toggle-switch.active::after {
+    left: 21px;
+}
+
+/* Buy Sequence */
+.buy-sequence-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.buy-sequence-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: move;
+    transition: all 0.2s ease;
+}
+
+.buy-sequence-item:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+}
+
+.buy-sequence-item.dragging {
+    opacity: 0.5;
+}
+
+.sequence-handle {
+    color: var(--text-tertiary);
+    cursor: grab;
+}
+
+.sequence-handle:active {
+    cursor: grabbing;
+}
+
+.sequence-number {
+    width: 24px;
+    height: 24px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sequence-wallet-select {
+    flex: 1;
+    padding: 6px 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+}
+
+.sequence-settings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sequence-input {
+    width: 80px;
+    padding: 6px 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    text-align: center;
+}
+
+.sequence-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.sequence-label {
+    font-size: 11px;
+    color: var(--text-tertiary);
+}
+
+.sequence-remove {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.sequence-remove:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+.add-sequence-btn {
+    padding: 8px 16px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.add-sequence-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Auto Sell Configuration */
+.auto-sell-wallets {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.auto-sell-wallet-config {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.auto-sell-wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.auto-sell-wallet-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.auto-sell-triggers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.trigger-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.trigger-type-select {
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+.trigger-input {
+    width: 60px;
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 12px;
+    text-align: center;
+}
+
+.trigger-label {
+    font-size: 11px;
+    color: var(--text-tertiary);
+}
+
+.add-trigger-btn {
+    padding: 4px 12px;
+    background: transparent;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.add-trigger-btn:hover {
+    background: var(--color-success);
+    color: var(--bg-primary);
+}
+
+.remove-trigger-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 12px;
+}
+
+.remove-trigger-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+/* Auto Trade Status Indicators */
+.wallet-auto-indicators {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+}
+
+.auto-indicator {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: help;
+    text-transform: uppercase;
+}
+
+.auto-indicator.buy {
+    background: var(--bg-success);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+}
+
+.auto-indicator.sell {
+    background: var(--bg-danger);
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+}
+
+.auto-indicator.launch {
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+}
+
+/* Wallet Manager Window */
+.wallet-manager-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+    min-width: 600px;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: hidden;
+    resize: both;
+}
+
+.wallet-manager-window.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.window-header {
+    background: var(--bg-tertiary);
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+}
+
+.window-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.window-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.window-close:hover {
+    background: var(--bg-danger);
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.window-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+/* Dev Wallet Section */
+.dev-wallet-section {
+    background: var(--dev-wallet-bg);
+    border: 1px solid var(--dev-wallet-border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.dev-wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.dev-wallet-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dev-wallet-status {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dev-wallet-status.configured {
+    background: var(--bg-success);
+    color: var(--color-success);
+}
+
+.dev-wallet-status.not-configured {
+    background: var(--bg-warning);
+    color: var(--color-warning);
+}
+
+.dev-wallet-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-input {
+    padding: 10px 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.dev-wallet-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.save-dev-wallet-btn {
+    flex: 1;
+    padding: 10px 16px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border: 1px solid var(--accent-primary);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.save-dev-wallet-btn:hover {
+    background: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+}
+
+.clear-dev-wallet-btn {
+    flex: 1;
+    padding: 10px 16px;
+    background: transparent;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.clear-dev-wallet-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+/* Add Trading Wallet Section */
+.add-wallet-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.add-wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.add-wallet-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.add-wallet-btn {
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.add-wallet-btn:hover {
+    background: var(--color-success);
+    color: var(--bg-primary);
+}
+
+.wallet-manager-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wallet-manager-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.wallet-manager-info {
+    flex: 1;
+}
+
+.wallet-manager-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wallet-manager-address {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 8px;
+}
+
+.wallet-manager-balances {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+}
+
+.balance-info {
+    color: var(--text-secondary);
+}
+
+.balance-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.wallet-manager-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 200px;
+}
+
+.action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.action-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slippage-label {
+    font-size: 9px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    position: absolute;
+    top: -8px;
+    left: 4px;
+    background: var(--bg-secondary);
+    padding: 0 4px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.amount-input {
+    width: 80px;
+    padding: 6px 10px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    text-align: center;
+}
+
+.amount-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.quick-buy-btn, .quick-sell-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.quick-buy-btn {
+    background: transparent;
+    color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.quick-buy-btn:hover {
+    background: var(--color-success);
+    color: var(--bg-primary);
+}
+
+.quick-sell-btn {
+    background: transparent;
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.quick-sell-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+.quick-buy-btn:disabled, .quick-sell-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.remove-wallet-btn {
+    padding: 6px 12px;
+    background: transparent;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.remove-wallet-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+.window-footer {
+    background: var(--bg-tertiary);
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window-footer-info {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+.window-footer-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.save-settings-btn {
+    padding: 9px 16px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border: 1px solid var(--accent-primary);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.save-settings-btn:hover {
+    background: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+}
+
+/* Overlay */
+.wallet-manager-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+.wallet-manager-overlay.active {
+    display: block;
+}
+
+/* Transaction Queue */
+.transaction-queue {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    max-width: 280px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.transaction-queue.active {
+    display: block;
+}
+
+.queue-header {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.queue-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+.queue-item.processing {
+    border-color: var(--color-warning);
+    animation: processing 1.5s ease-in-out infinite;
+}
+
+@keyframes processing {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.queue-item.success {
+    border-color: var(--color-success);
+    background: var(--bg-success);
+}
+
+.queue-item.error {
+    border-color: var(--color-danger);
+    background: var(--bg-danger);
+}
+
+/* Token Trades Section */
+.token-trades-section {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.trades-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.trades-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trades-stats {
+    display: flex;
+    gap: 16px;
+}
+
+.trade-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.trade-flow {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.trade-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.trade-item:hover {
+    background: var(--bg-hover);
+    transform: translateX(2px);
+}
+
+.trade-item.buy {
+    border-left: 3px solid var(--color-success);
+}
+
+.trade-item.sell {
+    border-left: 3px solid var(--color-danger);
+}
+
+.trade-item.create {
+    border-left: 3px solid var(--color-info);
+}
+
+.trade-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.trade-type-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trade-type-badge.buy {
+    background: var(--bg-success);
+    color: var(--color-success);
+}
+
+.trade-type-badge.sell {
+    background: var(--bg-danger);
+    color: var(--color-danger);
+}
+
+.trade-type-badge.create {
+    background: var(--bg-info);
+    color: var(--color-info);
+}
+
+.trade-details {
+    color: var(--text-secondary);
+}
+
+.trade-amount {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.trade-mc {
+    text-align: right;
+}
+
+.trade-mc-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+}
+
+.trade-mc-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+/* Spam Launch Styles */
+.spam-launch-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.spam-launch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.spam-launch-wallet-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spam-launch-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.spam-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.spam-input-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.spam-input-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spam-input {
+    padding: 8px 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+}
+
+.spam-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.spam-textarea {
+    padding: 8px 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    resize: vertical;
+    min-height: 60px;
+}
+
+.spam-remove-btn {
+    padding: 6px 12px;
+    background: transparent;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spam-remove-btn:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+.spam-launch-info {
+    background: var(--bg-info);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--color-info);
+}
+
+/* Spam Launch Button */
+.spam-launch-btn {
+    background: var(--bg-tertiary);
+    padding: 9px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spam-launch-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.spam-launch-btn.active {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Spam Launch Window */
+.spam-launch-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+    width: 800px;
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow: hidden;
+}
+
+.spam-launch-window.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Spam Launch Sections */
+.launch-wallet-section,
+.launch-token-section,
+.launch-trading-section {
+    margin-bottom: 20px;
+}
+
+.section-divider {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.wallet-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.trading-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.auto-sell-info {
+    background: rgba(255, 107, 0, 0.1);
+    border: 1px solid rgba(255, 107, 0, 0.3);
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--accent-primary);
+    text-align: center;
+}
+
+.launch-title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spam-launch-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.spam-launch-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.spam-launch-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spam-launch-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Spam Launch List */
+.spam-launch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.launch-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.launch-number {
+    width: 28px;
+    height: 28px;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.launch-wallet-select {
+    flex: 1;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.launch-remove {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 18px;
+}
+
+.launch-remove:hover {
+    background: var(--color-danger);
+    color: var(--bg-primary);
+}
+
+.launch-token-info {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.launch-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.launch-settings-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.social-links-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.social-links-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.add-launch-btn {
+    padding: 10px 20px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.add-launch-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* Loading State */
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    border-top-color: var(--accent-primary);
+    animation: spin 1s linear infinite;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-tertiary);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-hover);
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .activity-sidebar {
+        width: 100%;
+        max-height: 300px;
+    }
+    
+    .bonkops-header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
+    
+    .bonkops-nav {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .wallets-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-stats {
+        flex-direction: column;
+    }
+    
+    .stat-card {
+        width: 100%;
+    }
+}
+
+/* Font Import for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust app container padding for mobile */
+    .app-container {
+        padding: 20px 10px;
+    }
+    
+    /* Stack header elements vertically */
+    .bonkops-header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+    
+    /* Center logo */
+    .bonkops-logo {
+        margin: 0 auto;
+    }
+    
+    .bonkops-logo img {
+        height: 60px;
+    }
+    
+    /* Make nav wrap and center */
+    .bonkops-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    /* Smaller nav buttons on mobile */
+    .bonkops-nav-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-width: auto;
+    }
+    
+    .bonkops-nav-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Hide nav divider on mobile */
+    .nav-divider {
+        display: none;
+    }
+    
+    /* Stack wallet controls vertically */
+    .wallet-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .wallet-info {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    /* Full width portfolio stats */
+    .portfolio-stats {
+        width: 100%;
+        gap: 8px;
+    }
+    
+    .stat-card {
+        min-width: calc(50% - 4px);
+        padding: 8px 12px;
+    }
+    
+    /* Smaller text on mobile */
+    .stat-label {
+        font-size: 9px;
+    }
+    
+    .stat-value {
+        font-size: 12px;
+    }
+    
+    /* Single column wallet grid */
+    .wallets-grid {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 12px;
+    }
+    
+    /* Adjust wallet cards for mobile */
+    .wallet-card {
+        min-height: auto;
+        padding: 16px;
+    }
+    
+    /* Stack token info vertically */
+    .current-token-info {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+    }
+    
+    .token-details {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .token-controls {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .token-input-group {
+        width: 100%;
+    }
+    
+    .token-ca-input {
+        width: 100%;
+        font-size: 11px;
+    }
+    
+    /* Hide less important buttons on mobile */
+    .test-trade-btn {
+        display: none;
+    }
+    
+    /* Adjust activity button position */
+    .activity-toggle-btn {
+        bottom: 20px;
+        right: 20px;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    
+    /* Mobile-friendly modals */
+    .wallet-manager-window,
+    .auto-trade-window,
+    .activity-window {
+        width: calc(100vw - 20px);
+        max-height: calc(100vh - 40px);
+        margin: 20px 10px;
+    }
+    
+    /* Smaller font sizes in modals */
+    .window-title {
+        font-size: 14px;
+    }
+    
+    .form-label {
+        font-size: 11px;
+    }
+    
+    .form-input {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    
+    /* Stack action buttons */
+    .action-row {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .buy-btn,
+    .sell-btn {
+        width: 100%;
+    }
+    
+    /* Hide "COMING SOON" tooltips on mobile */
+    .bonkops-nav-btn.upcoming-feature::after {
+        display: none;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    /* Even smaller padding */
+    .app-container {
+        padding: 15px 8px;
+    }
+    
+    /* Smaller logo */
+    .bonkops-logo img {
+        height: 50px;
+    }
+    
+    /* Full width stats cards */
+    .stat-card {
+        min-width: 100%;
+    }
+    
+    /* Smaller buttons */
+    .wallet-manager-btn,
+    .auto-trade-btn,
+    .update-balance-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    
+    /* Hide button text, show only icons */
+    .wallet-manager-btn span,
+    .auto-trade-btn:not(.activity-toggle-btn) {
+        display: none;
+    }
+    
+    /* Adjust modal windows */
+    .window-header {
+        padding: 12px;
+    }
+    
+    .window-content {
+        padding: 12px;
+    }
+    
+    /* Single column forms */
+    .wallet-inputs-grid,
+    .trading-inputs-grid,
+    .spam-launch-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+    .app-container {
+        padding: 10px 20px;
+    }
+    
+    .bonkops-header {
+        flex-direction: row;
+        padding: 12px 16px;
+    }
+    
+    .bonkops-logo img {
+        height: 40px;
+    }
+    
+    .portfolio-stats {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    
+    .stat-card {
+        min-width: 120px;
+    }
+}
+
+/* ========================================
+   WALLET CREATION BUTTON STYLES - Add to style.css
+   ======================================== */
+
+/* Create Wallet Button */
+.create-wallet-btn {
+    padding: 10px 16px;
+    background: transparent;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+}
+
+.create-wallet-btn:hover {
+    background: var(--color-success);
+    color: var(--bg-primary);
+}
+
+.create-wallet-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.create-wallet-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Spinner animation for loading state */
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Wallet Creation Buttons Container */
+.wallet-creation-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Update dev wallet actions to accommodate new button */
+.dev-wallet-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.dev-wallet-actions .create-wallet-btn {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .wallet-creation-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .wallet-creation-buttons button {
+        width: 100%;
+    }
+    
+    .dev-wallet-actions {
+        flex-direction: column;
+    }
+    
+    .dev-wallet-actions button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BonkOps - Tactical Trading Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("data:image/svg+xml,%3Csvg width='1920' height='1080' viewBox='0 0 1920 1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CradialGradient id='bgGradient' cx='50%25' cy='50%25' r='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230a0a0a;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23000000;stop-opacity:1' /%3E%3C/radialGradient%3E%3Cpattern id='grid' x='0' y='0' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='40' height='40' fill='none' stroke='%231a1a1a' stroke-width='0.5' opacity='0.3'/%3E%3C/pattern%3E%3Cpattern id='hexPattern' x='0' y='0' width='60' height='52' patternUnits='userSpaceOnUse'%3E%3Cpolygon points='30,0 45,15 45,37 30,52 15,37 15,15' fill='none' stroke='%23ff6b00' stroke-width='0.2' opacity='0.05'/%3E%3C/pattern%3E%3Cpattern id='dots' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='40' cy='40' r='1' fill='%231a1a1a' opacity='0.4'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23bgGradient)'/%3E%3Crect width='1920' height='1080' fill='url(%23grid)'/%3E%3Crect width='1920' height='1080' fill='url(%23hexPattern)'/%3E%3Crect width='1920' height='1080' fill='url(%23dots)'/%3E%3Cg opacity='0.1'%3E%3Cpath d='M0,0 L200,0 L0,200 Z' fill='%23ff6b00' opacity='0.05'/%3E%3Cpath d='M1920,0 L1720,0 L1920,200 Z' fill='%23ff6b00' opacity='0.05'/%3E%3Cpath d='M0,1080 L200,1080 L0,880 Z' fill='%23ff6b00' opacity='0.05'/%3E%3Cpath d='M1920,1080 L1720,1080 L1920,880 Z' fill='%23ff6b00' opacity='0.05'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- BonkOps Header -->
+        <header class="bonkops-header">
+            <div class="bonkops-logo">
+                <img src="bonkops-logo.svg" alt="BonkOps" />
+            </div>
+            <nav class="bonkops-nav">
+                <!-- New upcoming feature buttons -->
+                <button class="bonkops-nav-btn upcoming-feature" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="2" x2="12" y2="22"></line>
+                        <polyline points="19 5 12 12 5 5"></polyline>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                    VOLUME
+                </button>
+                <button class="bonkops-nav-btn upcoming-feature" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    BUMPER
+                </button>
+                <button class="bonkops-nav-btn upcoming-feature" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="22" y1="12" x2="18" y2="12"></line>
+                        <line x1="6" y1="12" x2="2" y2="12"></line>
+                        <line x1="12" y1="6" x2="12" y2="2"></line>
+                        <line x1="12" y1="22" x2="12" y2="18"></line>
+                    </svg>
+                    SNIPER
+                </button>
+                
+                <!-- Divider -->
+                <div class="nav-divider"></div>
+                
+                <a href="https://twitter.com/bonkops" target="_blank" class="bonkops-nav-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    X
+                </a>
+                <a href="https://bonkops.gitbook.io/bonkops-docs" target="_blank" class="bonkops-nav-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    DOCS
+                </a>
+                <a href="#" class="bonkops-nav-btn" onclick="copyCA()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    CA
+                </a>
+            </nav>
+        </header>
+
+        <div class="container">
+            <!-- Header Section -->
+            <div class="header">
+                <div class="wallet-header">
+                    <div class="wallet-info">
+                        <button class="wallet-manager-btn" onclick="toggleWalletManager()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                                <path d="M3.6 15h16.8"/>
+                                <path d="M3.6 9h16.8"/>
+                            </svg>
+                            <span id="walletCount">0 wallets</span>
+                        </button>
+                        <button class="auto-trade-btn" id="autoTradeBtn" onclick="toggleAutoTrade()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20"></path>
+                                <path d="M17 5l-5 5-5-5"></path>
+                                <path d="M17 19l-5-5-5 5"></path>
+                            </svg>
+                            Auto Trade
+                        </button>
+                        <button class="auto-trade-btn" id="spamLaunchBtn" onclick="toggleSpamLaunch()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                            Spam Launch
+                        </button>
+                        <button class="update-balance-btn" onclick="testTrade()">
+                            Test Trade
+                        </button>
+                        <button class="update-balance-btn" id="updateBalanceBtn" onclick="updateAllBalances()">
+                            <svg class="refresh-icon" id="refreshIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 4v6h-6"></path>
+                                <path d="M1 20v-6h6"></path>
+                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                            </svg>
+                            Update All
+                        </button>
+                    </div>
+                    
+                    <div class="portfolio-stats">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <div class="stat-label">Initial</div>
+                                <div class="stat-value" id="initialHoldings">Loading...</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <div class="stat-label">Current</div>
+                                <div class="stat-value" id="currentHoldings">0 SOL</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <div class="stat-label">P&L</div>
+                                <div class="stat-value" id="realizedPnl">0 SOL</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <div class="stat-label">Win Rate</div>
+                                <div class="stat-value" id="winRate">0%</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <div class="stat-label">Active Token</div>
+                                <div class="stat-value" id="activeTokenDisplay">None</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Positions Section -->
+                <div class="positions-section">
+                    <div class="positions-header">
+                        <h2 class="section-title">Active Positions</h2>
+                        <div class="current-token-info" id="currentTokenInfo">
+                            <div class="token-details">
+                                <span class="token-name" id="currentTokenName">No active token</span>
+                                <span class="token-mint-full" id="currentTokenMint">-</span>
+                            </div>
+                            <div class="token-controls">
+                                <div class="token-input-group">
+                                    <input type="text" 
+                                        class="token-ca-input" 
+                                        id="tokenCAInput" 
+                                        placeholder="Paste contract address to track..."
+                                        onkeypress="if(event.key==='Enter') trackTokenFromInput()">
+                                    <button class="track-token-btn" onclick="trackTokenFromInput()">Track</button>
+                                </div>
+                                <div class="token-status" id="tokenStatus">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    Ready
+                                </div>
+                                <button class="clear-token-btn" id="clearTokenBtn" onclick="clearActiveToken()" style="display: none;" title="Clear active token">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wallets-grid" id="walletsGrid">
+                        <!-- Token holdings panel will be inserted here when active -->
+                        <!-- Wallet cards will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Token Trades Section -->
+                <div class="token-trades-section" id="tokenTradesSection" style="display: none;">
+                    <div class="trades-header">
+                        <h2 class="trades-title">Live Token Trades</h2>
+                        <div class="trades-stats">
+                            <div class="trade-stat">
+                                <span style="color: var(--color-success);">●</span>
+                                <span>Buys: <span id="liveBuyCount">0</span></span>
+                            </div>
+                            <div class="trade-stat">
+                                <span style="color: var(--color-danger);">●</span>
+                                <span>Sells: <span id="liveSellCount">0</span></span>
+                            </div>
+                            <div class="trade-stat">
+                                <span>Net Flow: <span id="netFlow" style="color: var(--text-primary);">0 SOL</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trade-flow" id="tradeFlow">
+                        <div class="empty-state">
+                            <p>Waiting for trades...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Toggle Button -->
+        <button class="activity-toggle-btn" onclick="toggleActivityWindow()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            Recent Activity
+        </button>
+
+        <!-- Activity Window -->
+        <div class="activity-window" id="activityWindow">
+            <div class="activity-window-header" id="activityWindowHeader">
+                <h3 class="activity-window-title">Recent Activity</h3>
+                <button class="activity-window-close" onclick="closeActivityWindow()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="activity-window-content">
+                <div class="activity-list" id="activityList">
+                    <div class="empty-state">
+                        <p>No recent activity</p>
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaction Queue -->
+        <div class="transaction-queue" id="transactionQueue">
+            <div class="queue-header">Transaction Queue</div>
+            <div id="queueItems"></div>
+        </div>
+
+        <!-- Wallet Manager Window -->
+        <div class="wallet-manager-overlay" id="walletManagerOverlay" onclick="closeWalletManager()"></div>
+        <div class="wallet-manager-window" id="walletManagerWindow">
+    <div class="window-header" id="windowHeader">
+        <h3 class="window-title">Wallet Manager</h3>
+        <button class="window-close" onclick="closeWalletManager()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+    <div class="window-content">
+        <!-- Dev Wallet Section -->
+        <div class="dev-wallet-section" id="devWalletSection">
+            <div class="dev-wallet-header">
+                <div class="dev-wallet-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    Dev Wallet (Token Creator)
+                </div>
+                <div class="dev-wallet-status" id="devWalletStatus">
+                    <span id="devWalletStatusText">Not Configured</span>
+                </div>
+            </div>
+            <div class="dev-wallet-form">
+                <div class="form-group">
+                    <label class="form-label">Wallet Address</label>
+                    <input type="text" class="form-input" id="devWalletAddress" placeholder="Enter dev wallet address...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Private Key</label>
+                    <input type="password" class="form-input" id="devWalletPrivateKey" placeholder="Enter private key...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">API Key (PumpPortal)</label>
+                    <input type="password" class="form-input" id="devWalletApiKey" placeholder="Enter API key...">
+                </div>
+                <div class="dev-wallet-actions">
+                    <button class="create-wallet-btn" id="createDevWalletBtn" onclick="createDevWallet()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20m10-10H2"></path>
+                        </svg>
+                        Create New Dev Wallet
+                    </button>
+                    <button class="save-dev-wallet-btn" onclick="saveDevWallet()">Save Dev Wallet</button>
+                    <button class="clear-dev-wallet-btn" onclick="clearDevWallet()">Clear Dev Wallet</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add Trading Wallet Section -->
+        <div class="add-wallet-section">
+            <div class="add-wallet-header">
+                <h4 class="add-wallet-title">Trading Wallets</h4>
+                <div class="wallet-creation-buttons">
+                    <button class="create-wallet-btn" id="createTradingWalletBtn" onclick="createTradingWallet()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20m10-10H2"></path>
+                        </svg>
+                        Create New Wallet
+                    </button>
+                    <button class="add-wallet-btn" onclick="showAddWalletForm()">+ Add Existing Wallet</button>
+                </div>
+            </div>
+            <div id="addWalletForm" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">Wallet Name</label>
+                    <input type="text" class="form-input" id="newWalletName" placeholder="Enter wallet name...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Wallet Address</label>
+                    <input type="text" class="form-input" id="newWalletAddress" placeholder="Enter wallet address...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Private Key</label>
+                    <input type="password" class="form-input" id="newWalletPrivateKey" placeholder="Enter private key...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">API Key (PumpPortal)</label>
+                    <input type="password" class="form-input" id="newWalletApiKey" placeholder="Enter API key...">
+                </div>
+                <div class="dev-wallet-actions">
+                    <button class="save-dev-wallet-btn" onclick="addTradingWallet()">Add Wallet</button>
+                    <button class="clear-dev-wallet-btn" onclick="hideAddWalletForm()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Regular Wallets List -->
+        <div class="wallet-manager-list" id="walletManagerList">
+            <!-- Wallet items will be dynamically inserted here -->
+        </div>
+    </div>
+    <div class="window-footer">
+        <div class="window-footer-info">
+            <span id="totalBalanceInfo">Total: 0 SOL</span>
+        </div>
+        <div class="window-footer-actions">
+            <input type="file" id="importFile" accept=".json" style="display: none;" onchange="handleImportFile(this)">
+                <button class="save-settings-btn" onclick="document.getElementById('importFile').click()" style="background: transparent; border-color: var(--color-warning); color: var(--color-warning);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Import Wallets
+                </button>
+                <button class="save-settings-btn" onclick="exportWalletsToJSON()" style="background: transparent; border-color: var(--color-info); color: var(--color-info);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Export Wallets
+                </button>
+            <button class="save-settings-btn" onclick="saveWalletSettings()">Save Settings</button>
+        </div>
+    </div>
+</div>
+
+        <!-- Spam Launch Window -->
+        <div class="wallet-manager-overlay" id="spamLaunchOverlay" onclick="closeSpamLaunch()"></div>
+        <div class="auto-trade-window" id="spamLaunchWindow">
+            <div class="window-header" id="spamLaunchHeader">
+                <h3 class="window-title">Spam Launch Settings</h3>
+                <button class="window-close" onclick="closeSpamLaunch()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="window-content">
+                <!-- Spam Launch Configuration -->
+                <div class="auto-trade-section">
+                    <div class="auto-trade-section-header">
+                        <h4 class="auto-trade-section-title">Spam Launch Configuration</h4>
+                        <div class="auto-trade-toggle">
+                            <span>Enable Spam Launch</span>
+                            <div class="toggle-switch" id="spamLaunchToggle" onclick="toggleSpamLaunchEnabled()"></div>
+                        </div>
+                    </div>
+                    <div class="spam-launch-info" style="background: var(--bg-info); padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; color: var(--color-info);">
+                        When enabled, creating a token with your dev wallet will automatically trigger token creation from configured wallets below.
+                    </div>
+                    <div class="spam-launch-list" id="spamLaunchList">
+                        <!-- Spam launch items will be dynamically inserted here -->
+                    </div>
+                    <button class="add-sequence-btn" onclick="addSpamLaunchItem()">+ Add Launch Configuration</button>
+                </div>
+            </div>
+            <div class="window-footer">
+                <div class="window-footer-info">
+                    <span id="spamLaunchInfo">Configure automatic token launches</span>
+                </div>
+                <div class="window-footer-actions">
+                    <button class="save-settings-btn" onclick="saveSpamLaunchSettings()">Save Spam Launch Settings</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Auto Trade Settings Window -->
+        <div class="wallet-manager-overlay" id="autoTradeOverlay" onclick="closeAutoTrade()"></div>
+        <div class="auto-trade-window" id="autoTradeWindow">
+            <div class="window-header" id="autoTradeHeader">
+                <h3 class="window-title">Auto Trade Settings</h3>
+                <button class="window-close" onclick="closeAutoTrade()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="window-content">
+                <!-- Auto Buy Section -->
+                <div class="auto-trade-section">
+                    <div class="auto-trade-section-header">
+                        <h4 class="auto-trade-section-title">Auto Buy Settings (On Token Creation)</h4>
+                        <div class="auto-trade-toggle">
+                            <span>Enable Auto Buy</span>
+                            <div class="toggle-switch" id="autoBuyToggle" onclick="toggleAutoBuy()"></div>
+                        </div>
+                    </div>
+                    <div class="buy-sequence-list" id="buySequenceList">
+                        <!-- Buy sequence items will be dynamically inserted here -->
+                    </div>
+                    <button class="add-sequence-btn" onclick="addBuySequenceItem()">+ Add Wallet to Sequence</button>
+                </div>
+                
+                <!-- Auto Sell Section -->
+                <div class="auto-trade-section">
+                    <div class="auto-trade-section-header">
+                        <h4 class="auto-trade-section-title">Auto Sell Settings</h4>
+                        <div class="auto-trade-toggle">
+                            <span>Enable Auto Sell</span>
+                            <div class="toggle-switch" id="autoSellToggle" onclick="toggleAutoSell()"></div>
+                        </div>
+                    </div>
+                    <div class="auto-sell-wallets" id="autoSellWallets">
+                        <!-- Auto sell wallet configs will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="window-footer">
+                <div class="window-footer-info">
+                    <span id="autoTradeInfo">Configure automatic trading on token creation</span>
+                </div>
+                <div class="window-footer-actions">
+                    <button class="save-settings-btn" onclick="saveAutoTradeSettings()">Save Auto Trade Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Copy CA function for the header button
+        function copyCA() {
+            const ca = "BonkOpsContractAddressHere"; // Replace with actual CA
+            navigator.clipboard.writeText(ca).then(() => {
+                alert("Contract address copied!");
+            });
+        }
+    </script>
+</body>
+</html>
