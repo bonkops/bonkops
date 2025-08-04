@@ -3,7 +3,7 @@
 ![Your paragraph text (3)](https://github.com/user-attachments/assets/ea845f34-706e-4081-8f3b-ea67000a21de)
 
 
-A professional multi-wallet trading dashboard for pump.fun tokens with automated trading capabilities.
+A professional multi-wallet trading dashboard for bonk.fun tokens with automated trading capabilities.
 
 ## Features ✨
 
@@ -12,7 +12,7 @@ A professional multi-wallet trading dashboard for pump.fun tokens with automated
 - **Instant Wallet Creation** - Create new wallets with one click via PumpPortal
 - **Auto-Buy Sequences** - Automated buying when dev wallet creates tokens
 - **Auto-Sell Triggers** - Set profit targets, time limits, or follow dev sells
-- **Token Monitoring** - Track any pump.fun token with live trade flow
+- **Token Monitoring** - Track any bonk.fun token with live trade flow
 - **Export/Import** - Backup and restore your wallet configurations
 
 ## Quick Start 🏃‍♂️
