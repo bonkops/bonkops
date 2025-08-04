@@ -5,6 +5,11 @@
 
 A professional multi-wallet trading dashboard for bonk.fun tokens with automated trading capabilities.
 
+X: https://x.com/BonkOps
+Website: https://bonk-ops.com/
+Docs: https://bonkops.gitbook.io/bonkops-docs/
+Dev: https://x.com/luludrawsz
+
 ## Features ✨
 
 - **Multi-Wallet Management** - Manage unlimited trading wallets from one interface
