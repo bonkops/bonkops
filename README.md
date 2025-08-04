@@ -5,10 +5,10 @@
 
 A professional multi-wallet trading dashboard for bonk.fun tokens with automated trading capabilities.
 
-X: https://x.com/BonkOps
-Website: https://bonk-ops.com/
-Docs: https://bonkops.gitbook.io/bonkops-docs/
-Dev: https://x.com/luludrawsz
+- X: https://x.com/BonkOps
+- Website: https://bonk-ops.com/
+- Docs: https://bonkops.gitbook.io/bonkops-docs/
+- Dev: https://x.com/luludrawsz
 
 ## Features ✨
 
